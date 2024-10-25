@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/main.dart';
 
@@ -25,8 +26,10 @@ class Login extends StatelessWidget {
                 height: 30,
               ),
               TextFormField(
-                controller: TextEditingController(text: 'E-mail/Contact'),
+                controller: TextEditingController(),
                 decoration: InputDecoration(
+                    labelText: "Email",
+                    hintText: "Enter your email",
                     filled: true,
                     fillColor: Colors.blueGrey,
                     constraints: const BoxConstraints(
@@ -44,8 +47,10 @@ class Login extends StatelessWidget {
                 height: 20,
               ),
               TextFormField(
-                controller: TextEditingController(text: 'Password'),
+                controller: TextEditingController(),
                 decoration: InputDecoration(
+                    labelText: "Password",
+                    hintText: "Enter your password",
                     filled: true,
                     fillColor: Colors.blueGrey,
                     constraints: const BoxConstraints(
@@ -83,18 +88,19 @@ class Login extends StatelessWidget {
                   children: [
                     TextSpan(
                         text: 'Sign Up',
-                        onEnter: (event) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const Signin(),
-                            ),
-                          );
-                        },
                         style: TextStyle(
                           color: Colors.blue.shade900,
                           decoration: TextDecoration.underline,
-                        ))
+                        ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const Signin(),
+                              ),
+                            );
+                          }),
                   ],
                 ),
               ),

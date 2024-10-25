@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/LoginPage.dart';
 
@@ -12,6 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primaryColor: const Color.fromARGB(96, 24, 22, 22),
@@ -46,10 +48,12 @@ class Signin extends StatelessWidget {
                 height: 30,
               ),
               TextFormField(
-                controller: TextEditingController(text: 'Name'),
+                controller: TextEditingController(),
                 decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.blueGrey,
+                    labelText: "Name",
+                    hintText: "Enter your name",
+                    filled: true,
+                    fillColor: Colors.blueGrey,
                     constraints: const BoxConstraints(
                       maxHeight: 50,
                       maxWidth: 300,
@@ -65,10 +69,12 @@ class Signin extends StatelessWidget {
                 height: 20,
               ),
               TextFormField(
-                controller: TextEditingController(text: 'Contact'),
+                controller: TextEditingController(),
                 decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.blueGrey,
+                    labelText: "Contact",
+                    hintText: "Enter your contact number",
+                    filled: true,
+                    fillColor: Colors.blueGrey,
                     constraints: const BoxConstraints(
                       maxHeight: 50,
                       maxWidth: 300,
@@ -84,10 +90,12 @@ class Signin extends StatelessWidget {
                 height: 20,
               ),
               TextFormField(
-                controller: TextEditingController(text: 'E-mail'),
+                controller: TextEditingController(),
                 decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.blueGrey,
+                    labelText: "Email",
+                    hintText: "Enter your email",
+                    filled: true,
+                    fillColor: Colors.blueGrey,
                     constraints: const BoxConstraints(
                       maxHeight: 50,
                       maxWidth: 300,
@@ -103,10 +111,12 @@ class Signin extends StatelessWidget {
                 height: 20,
               ),
               TextFormField(
-                controller: TextEditingController(text: 'Password'),
+                controller: TextEditingController(),
                 decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.blueGrey,
+                    labelText: "Password",
+                    hintText: "Enter your password",
+                    filled: true,
+                    fillColor: Colors.blueGrey,
                     constraints: const BoxConstraints(
                       maxHeight: 50,
                       maxWidth: 300,
@@ -142,17 +152,18 @@ class Signin extends StatelessWidget {
                   children: [
                     TextSpan(
                         text: 'Login',
-                        onEnter: (event) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Login()),
-                          );
-                        },
                         style: TextStyle(
                           color: Colors.blue.shade900,
                           decoration: TextDecoration.underline,
-                        ))
+                        ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const Login()),
+                            );
+                          }),
                   ],
                 ),
               ),
